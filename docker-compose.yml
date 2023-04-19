@@ -1,0 +1,62 @@
+version: "3" # Version de Compose
+name: woodytoys # Nom du projet
+services:
+ #   web: # Nom du conteneur
+ #       image: nginx:alpine # Image du conteneur
+ #       links: # Liaison avec d'autres conteneurs
+ #           - db:database
+ #   ports: # Port h^ote -> Port conteneur
+ #       - 80:80
+ #   networks: # R´eseau associ´e
+ #       - intranet
+ #   db:
+ #       image: mysql:5.7
+ #       environment: # Variables d'environnements
+ #           MYSQL_ROOT_PASSWORD: root
+  #          MYSQL_DATABASE: database
+  #          MYSQL_USER: user
+  #          MYSQL_PASSWORD: password
+  #      volumes:
+ #           - db-data:/var/lib/mysql
+  #      networks:
+  #          - intranet
+    resolver:
+        build:
+            context: Intranet/dns
+            dockerfile: Dockerfile
+        ports:
+            - 53:53/udp
+            - 53:53/tcp
+        networks:
+            intranet:
+                ipv4_address: 192.168.3.3
+            
+    soa:
+        build:
+            context: Intranet/soa
+            dockerfile: Dockerfile
+        networks:
+            intranet:
+                ipv4_address: 192.168.3.5
+ #   mail:
+ 
+    user1:
+        build:
+            context: Intranet/user1
+            dockerfile: Dockerfile
+        networks:
+            intranet:
+                ipv4_address: 192.168.3.6
+        dns: 192.168.3.3
+        tty: true
+        
+    
+volumes: # D´efinition des volumes
+    db-data:
+networks:
+    intranet:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.3.0/24
+    other-net: # Autres d´efinitions de r´eseaux
