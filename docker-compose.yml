@@ -47,6 +47,8 @@ services:
         build:
             context: Public/Zimbra
             dockerfile: Dockerfile
+        volumes:
+            - mail-db: /var/mail
         networks:
             intranet:
                 ipv4_address: 192.168.3.4
