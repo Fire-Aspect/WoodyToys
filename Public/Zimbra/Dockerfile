@@ -11,6 +11,4 @@ RUN useradd -m -p user2 user2
 
 COPY main.cf /etc/postfix/
 
-EXPOSE 25
-
 CMD ["/usr/lib/postfix/sbin/master", "-d"]

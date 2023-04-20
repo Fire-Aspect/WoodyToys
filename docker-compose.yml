@@ -2,7 +2,10 @@ version: "3" # Version de Compose
   #name: woodytoys # Nom du projet
 services:
     web: # Nom du conteneur
-        image: nginx:alpine # Image du conteneur
+        
+        build:
+            context: Intranet/web
+            dockerfile: Dockerfile
         links: # Liaison avec d'autres conteneurs
             - db:database
         ports: # Port hote -> Port conteneur
@@ -41,13 +44,13 @@ services:
             intranet:
                 ipv4_address: 192.168.3.5
     mail:
-      build:
-        context: Public/Zimbra
-        dockerfile: Dockerfile
-      networks:
-        intranet:
-          ipv4_address: 192.168.3.4
-      dns: 192.168.3.3
+        build:
+            context: Public/Zimbra
+            dockerfile: Dockerfile
+        networks:
+            intranet:
+                ipv4_address: 192.168.3.4
+        dns: 192.168.3.3
  
     user1:
         build:

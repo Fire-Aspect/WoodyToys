@@ -1,7 +1,6 @@
 # Define server identity
 myhostname = mail.woodytoys.lan
 mydomain = woodytoys.lan
-
 # Outgoing mail must use this as source address domain
 myorigin = $mydomain
 # Accepting local mail delivery for those destinations
@@ -15,5 +14,5 @@ smtpd_relay_restrictions = permit_mynetworks, reject
 
 #Log configuration
 maillog_file=/var/log/postfix.log
-#debug_peer_list = woodytoys.lab
+#debug_peer_list = woodytoys.lan
 #debug_peer_level = 5
