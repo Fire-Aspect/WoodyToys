@@ -76,6 +76,7 @@ services:
     
 volumes: # D´efinition des volumes
     db-data:
+    mail-db:
 networks:
     intranet:
         driver: bridge
