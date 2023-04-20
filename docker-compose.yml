@@ -1,12 +1,13 @@
 version: "3" # Version de Compose
-name: woodytoys # Nom du projet
+  #name: woodytoys # Nom du projet
 services:
     web: # Nom du conteneur
-        image: nginx:alpine # Image du conteneur
+        
+        build:
+            context: Intranet/web
+            dockerfile: Dockerfile
         links: # Liaison avec d'autres conteneurs
             - db:database
-        ports: # Port hote -> Port conteneur
-            - 80:80
         networks: # R´eseau associ´e
             intranet:
                 ipv4_address: 192.168.3.2
@@ -26,9 +27,6 @@ services:
         build:
             context: Intranet/dns
             dockerfile: Dockerfile
-        ports:
-            - 53:53/udp
-            - 53:53/tcp
         networks:
             intranet:
                 ipv4_address: 192.168.3.3
@@ -40,7 +38,16 @@ services:
         networks:
             intranet:
                 ipv4_address: 192.168.3.5
- #   mail:
+    mail:
+        build:
+            context: Public/Zimbra
+            dockerfile: Dockerfile
+        volumes:
+            - mail-db:/var/mail
+        networks:
+            intranet:
+                ipv4_address: 192.168.3.4
+        dns: 192.168.3.3
  
     user1:
         build:
@@ -52,9 +59,19 @@ services:
         dns: 192.168.3.3
         tty: true
         
+    user2:
+      build:
+        context: Intranet/user2
+        dockerfile: Dockerfile
+      networks:
+        intranet:
+          ipv4_address: 192.168.3.8
+      dns: 192.168.3.3
+      tty: true
     
 volumes: # D´efinition des volumes
     db-data:
+    mail-db:
 networks:
     intranet:
         driver: bridge

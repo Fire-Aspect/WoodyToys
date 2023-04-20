@@ -21,4 +21,4 @@ mail			IN		A		192.168.3.4
 
 
 ;MX records for mail server
-		IN		MX		10		mail.woodytoys.lan.
+1w	IN		MX		10		mail.woodytoys.lan.
