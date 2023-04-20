@@ -1,0 +1,5 @@
+enlever les ports publiés pour intranet.
+faire la retransmission mail .
+faire test lien db .
+faire la doc.
+séparer en sous-réseaux.
