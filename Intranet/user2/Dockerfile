@@ -11,6 +11,6 @@ RUN apt-get install -y dnsutils
 RUN apt-get install -y links
 RUN apt-get install -y mutt
 
-RUN useradd -m -p user1 user1
-COPY .muttrc /home/user1/
-USER user1
+RUN useradd -m -p user2 user2
+COPY .muttrc /home/user2/
+USER user2
