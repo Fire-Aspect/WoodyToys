@@ -8,8 +8,6 @@ services:
             dockerfile: Dockerfile
         links: # Liaison avec d'autres conteneurs
             - db:database
-        ports: # Port hote -> Port conteneur
-            - 80:80
         networks: # R´eseau associ´e
             intranet:
                 ipv4_address: 192.168.3.2
@@ -29,9 +27,6 @@ services:
         build:
             context: Intranet/dns
             dockerfile: Dockerfile
-        ports:
-            - 53:53/udp
-            - 53:53/tcp
         networks:
             intranet:
                 ipv4_address: 192.168.3.3
