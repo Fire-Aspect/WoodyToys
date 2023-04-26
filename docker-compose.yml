@@ -25,7 +25,7 @@ services:
                 ipv4_address: 192.168.3.7
     resolver:
         build:
-            context: Intranet/dns
+            context: Intranet/resolver
             dockerfile: Dockerfile
         networks:
             intranet:
@@ -40,7 +40,7 @@ services:
                 ipv4_address: 192.168.3.5
     mail:
         build:
-            context: Public/Zimbra
+            context: Public/mail
             dockerfile: Dockerfile
         volumes:
             - mail-db:/var/mail
@@ -66,8 +66,8 @@ services:
         networks:
             intranet:
                 ipv4_address: 192.168.3.8
-            dns: 192.168.3.3
-            tty: true
+        dns: 192.168.3.3
+        tty: true
             
     web_public:
         build:
@@ -79,7 +79,7 @@ services:
         networks:
             public:
                 ipv4_address: 192.168.1.2
-            dns: 192.168.1.3
+        dns: 192.168.1.3
         links: # Liaison avec d'autres conteneurs
             - db:database    
             
@@ -101,16 +101,25 @@ services:
         networks:
             public:
                 ipv4_address: 192.168.1.4
-    mail_public:
+    client:
         build:
-            context: Public/mail
+            context: Public/client
             dockerfile: Dockerfile
-        volumes:
-            - mail-public:/var/mail
         networks:
-            intranet:
-                ipv4_address: 192.168.1.5
+            public:
+                ipv4_address: 192.168.1.6
         dns: 192.168.1.3
+        tty: true
+    #mail_public:
+    #    build:
+    #        context: Public/mail
+    #        dockerfile: Dockerfile
+    #    volumes:
+    #     - mail-public:/var/mail
+    #    networks:
+    #        intranet:
+    #            ipv4_address: 192.168.1.5
+    #    dns: 192.168.1.3
  
 
             
@@ -122,12 +131,12 @@ volumes: # D´efinition des volumes
     mail-public:
 networks:
     intranet:
-        driver: default
+        driver: bridge
         ipam:
             config:
                 - subnet: 192.168.3.0/24
     public:    # Autres d´efinitions de r´eseaux
-        driver: default
+        driver: bridge
         ipam:
             config:
                 - subnet: 192.168.1.0/24

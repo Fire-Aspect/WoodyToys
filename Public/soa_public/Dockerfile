@@ -10,7 +10,7 @@ COPY named.conf /etc/bind/
 
 COPY db.192.168.1.0 /etc/bind/
 
-COPY woodytoys.be /etc/bind/
+COPY m1-1.ephec-ti.be /etc/bind/
 
 CMD ["named", "-g"]
 
