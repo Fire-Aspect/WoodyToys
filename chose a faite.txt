@@ -1,4 +1,4 @@
-enlever les ports publiés pour intranet.
+enlever les ports publiés pour intranet. fait
 faire la retransmission mail .
 faire test lien db .
 faire la doc.

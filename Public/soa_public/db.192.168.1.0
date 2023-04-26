@@ -1,0 +1,17 @@
+$TTL 86400
+@ IN SOA soa.woodytoys.be. admin.woodytoys.be. (
+    2023032102 ; serial number
+    3600 ; refresh
+    1800 ; retry
+    604800 ; expire
+    86400 ; default TTL
+)
+
+; Define name servers
+@ IN NS soa.woodytoys.be.
+
+; Define PTR records for IP addresses in the 192.168.3.0/24 subnet
+2	IN	PTR	www.woodytoys.be.
+3	IN	PTR	resolver.woodytoys.be.
+5	IN	PTR	mail.woodytoys.be.
+4	IN	PTR	soa.woodytoys.be.
