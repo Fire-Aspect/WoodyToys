@@ -1,6 +1,6 @@
 $ORIGIN m1-1.ephec-ti.be.
 $TTL 3600
-@       IN      SOA     soa-public.m1-1.ephec-ti.be. admin.m1-1.ephec-ti.be. (
+@       IN      SOA     ns.m1-1.ephec-ti.be. admin.m1-1.ephec-ti.be. (
                         2022032101      ; serial number
                         3600            ; refresh period
                         1800            ; retry period
@@ -9,13 +9,13 @@ $TTL 3600
                         )
 
 ; Define the name servers for the zone
-        IN      NS      soa-public.m1-1.ephec-ti.be.
+        IN      NS      ns.m1-1.ephec-ti.be.
 ; Define the IP addresses for the name servers
-soa-public     IN      A       192.168.1.4
+ns  	IN      A       192.168.1.4
 
 ; Define the IP address for the web server
 www     		IN      A       192.168.1.2
-soa-public		IN		A		192.168.1.4
+ns				IN		A		192.168.1.4
 resolver		IN		A		192.168.1.3
 mail			IN		A		192.168.3.5
 
