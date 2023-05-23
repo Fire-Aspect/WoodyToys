@@ -8,5 +8,8 @@ COPY httpd.conf /usr/local/apache2/conf/
 COPY index.html /usr/local/apache2/htdocs
 COPY b2b.html /usr/local/apache2/htdocs/b2b
 
+CMD ["httpd-foreground"]
+
 EXPOSE 80
 EXPOSE 443
+
