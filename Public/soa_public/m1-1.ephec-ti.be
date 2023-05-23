@@ -1,6 +1,6 @@
-$ORIGIN m1-1.ephec-ti.be.
+$ORIGIN m1-1.iglesias1602.site.
 $TTL 3600
-@       IN      SOA     soa-public.m1-1.ephec-ti.be. admin.m1-1.ephec-ti.be. (
+@       IN      SOA     ns.m1-1.iglesias1602.site. admin.m1-1.iglesias1602.site. (
                         2022032101      ; serial number
                         3600            ; refresh period
                         1800            ; retry period
@@ -9,17 +9,18 @@ $TTL 3600
                         )
 
 ; Define the name servers for the zone
-        IN      NS      soa-public.m1-1.ephec-ti.be.
+@       IN      NS      ns.m1-1.iglesias1602.site.
+
 ; Define the IP addresses for the name servers
-soa-public     IN      A       192.168.1.4
+ns	IN	A	15.188.20.120
 
 ; Define the IP address for the web server
-www     		IN      A       192.168.1.2
-soa-public		IN		A		192.168.1.4
-resolver		IN		A		192.168.1.3
-mail			IN		A		192.168.3.5
+@			IN		A		15.188.20.120
+b2b			IN		A		15.188.20.120
+www			IN		A		15.188.20.120
+mail			IN		A		15.188.20.120
 
 
 ;MX records for mail server
-1w		IN		MX		10		mail.m1-1.ephec-ti.be.
+1w		IN		MX		10		mail.m1-1.iglesias1602.site.
 

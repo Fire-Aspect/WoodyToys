@@ -1,5 +1,5 @@
 $TTL 86400
-@ IN SOA soa-public.m1-1.ephec-ti.be. admin.m1-1.ephec-ti.be. (
+@ IN SOA ns.iglesias1602.site. admin.iglesias1602.site. (
     2023032102 ; serial number
     3600 ; refresh
     1800 ; retry
@@ -8,10 +8,9 @@ $TTL 86400
 )
 
 ; Define name servers
-@ IN NS soa-public.m1-1.ephec-ti.be.
+@ IN NS ns.m1-1.iglesias1602.site.
 
 ; Define PTR records for IP addresses in the 192.168.1.0/24 subnet
-2	IN	PTR	www.m1-1.ephec-ti.be.
-3	IN	PTR	resolver.m1-1.ephec-ti.be.
-5	IN	PTR	mail.m1-1.ephec-ti.be.
-4	IN	PTR	soa-public.m1-1.ephec-ti.be.
+2	IN	PTR	www.m1-1.iglesias1602.site.
+5	IN	PTR	mail.m1-1.iglesias1602.site.
+4	IN	PTR	ns.m1-1.iglesias1602.site.
