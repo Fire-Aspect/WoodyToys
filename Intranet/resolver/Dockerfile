@@ -8,6 +8,8 @@ RUN mkdir -p /var/log/named/
 
 COPY named.conf /etc/bind/
 
+COPY resolv.conf /etc/
+
 EXPOSE 53/tcp/udp
 
 CMD ["named", "-g"]
