@@ -13,5 +13,4 @@ $TTL 86400
 ; Define PTR records for IP addresses in the 192.168.3.0/24 subnet
 2	IN	PTR	www.woodytoys.lan.
 3	IN	PTR	resolver.woodytoys.lan.
-4	IN	PTR	mail.woodytoys.lan.
 5	IN	PTR	soa.woodytoys.lan.

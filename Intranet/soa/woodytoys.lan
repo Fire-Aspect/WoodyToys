@@ -14,11 +14,6 @@ $TTL 3600
 soa     IN      A       192.168.3.5
 
 ; Define the IP address for the web server
-www     		IN      A       192.168.3.2
-soa				IN		A		192.168.3.5
+www			IN		A		192.168.3.2
+soa			IN		A		192.168.3.5
 resolver		IN		A		192.168.3.3
-mail			IN		A		192.168.3.4
-
-
-;MX records for mail server
-1w	IN		MX		10		mail.woodytoys.lan.
