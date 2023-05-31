@@ -2,8 +2,8 @@ myhostname = mail.m1-1.iglesias1602.site
 mydomain = m1-1.iglesias1602.site
 myorigin = $mydomain
 mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
-relayhost =
-mynetworks = 192.168.1.0/24 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]
+#relayhost = mxtoolboxsmtpdiag.com
+mynetworks = 0.0.0.0/0
 mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
@@ -15,11 +15,13 @@ biff = no
 
 maillog_file=/var/log/postfix.log
 
-smtpd_relay_restrictions = permit_mynetworks, reject
+smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+#smtpd_relay_restrictions = permit_mynetworks, reject
 smtpd_tls_cert_file=/etc/ssl/certs/mailcert.pem
-smtpd_tls_key_file=/etc/ssl/private/mail.key
+smtpd_tls_key_file=/etc/ssl/certs/mail.key
 smtpd_use_tls=yes
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 smtpd_tls_security_level=may
 smtpd_tls_protocols = !SSLv2, !SSLv3
+
