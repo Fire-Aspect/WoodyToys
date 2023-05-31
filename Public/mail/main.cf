@@ -1,18 +1,25 @@
-# Define server identity
-myhostname = mail.woodytoys.lan
-mydomain = woodytoys.lan
-# Outgoing mail must use this as source address domain
+myhostname = mail.m1-1.iglesias1602.site
+mydomain = m1-1.iglesias1602.site
 myorigin = $mydomain
-# Accepting local mail delivery for those destinations
-mydestination = $myhostname localhost.$mydomain localhost $mydomain
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+relayhost =
+mynetworks = 192.168.1.0/24 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = all
+inet_protocols = all
+home_mailbox = Maildir/
 
-smtpd_banner = $myhostname ESMTP $mail_name
+smtpd_banner = $myhostname ESTMP Postfix (Ubuntu)
+biff = no
 
-# Network from which we accept smtp connexions
-mynetworks = 192.168.3.0/24 127.0.0.0/8 [::1]/128
-smtpd_relay_restrictions = permit_mynetworks, reject
-
-#Log configuration
 maillog_file=/var/log/postfix.log
-#debug_peer_list = woodytoys.lan
-#debug_peer_level = 5
+
+smtpd_relay_restrictions = permit_mynetworks, reject
+smtpd_tls_cert_file=/etc/ssl/certs/mailcert.pem
+smtpd_tls_key_file=/etc/ssl/private/mail.key
+smtpd_use_tls=yes
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+smtpd_tls_security_level=may
+smtpd_tls_protocols = !SSLv2, !SSLv3

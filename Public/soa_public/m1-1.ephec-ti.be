@@ -15,12 +15,12 @@ $TTL 3600
 ns	IN	A	15.188.20.120
 
 ; Define the IP address for the web server
-@			IN		A		15.188.20.120
-b2b			IN		A		15.188.20.120
-www			IN		A		15.188.20.120
-mail			IN		A		15.188.20.120
+@	IN	A	15.188.20.120
+b2b	IN	A	15.188.20.120
+www	IN	A	15.188.20.120
+mail	IN	A	15.188.20.120
 
 
 ;MX records for mail server
-1w		IN		MX		10		mail.m1-1.iglesias1602.site.
+mail.m1-1.iglesias1602.site	IN	MX	10	mail.m1-1.iglesias1602.site.
 

@@ -2,7 +2,6 @@ version: "3" # Version de Compose
   #name: woodytoys # Nom du projet
 services:
     web: # Nom du conteneur
-        
         build:
             context: Intranet/web
             dockerfile: Dockerfile
@@ -42,13 +41,17 @@ services:
         build:
             context: Public/mail
             dockerfile: Dockerfile
+        ports:
+           - "25:25"
+           - "143:143"
+           - "587:587"
+           - "993:993"
         volumes:
-            - mail-db:/var/mail
+           - mail-db:/var/mail
         networks:
-            intranet:
-                ipv4_address: 192.168.3.4
-        dns: 192.168.3.3
- 
+            public:
+                ipv4_address: 192.168.1.5
+
     user1:
         build:
             context: Intranet/user1
